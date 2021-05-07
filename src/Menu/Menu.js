@@ -13,9 +13,7 @@ export default function Menu(props){
   
   if(todosPratos.length>0 && todasBebidas.length>0 && todasSobremesas.length>0 ){
     props.setAtivador(true)
-    console.log('foii')
   }else{
-    console.log('alo')
     props.setAtivador(false)
   }
     return(

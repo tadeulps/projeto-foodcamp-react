@@ -8,7 +8,7 @@ export default function Opcao(props){
 
     return(
     <div class={classe} onClick={Selecionar}>
-        <button onClick={verificadora}>verificar</button>
+        
         <img src={`img/${props.imagem}.png`} />
         <div class="titulo">{props.titulo}</div>
         <div class="descricao">{props.descricao}</div>
@@ -73,14 +73,5 @@ export default function Opcao(props){
         setTodosOpcoes([...novaArray,itemSelecionado]);
         
       }
-    
-    function verificadora(){
-        console.log(todosOpcoes)
-    }
 }
 
-/*arrayDesejada=[
-    {prato:{as arrays dos pratos selecionados}},
-    {bebida:{as arrays dos bebidas selecionados}},
-    {sobremesa:{as arrays dos sobremesa selecionados}}
-   ];*/
