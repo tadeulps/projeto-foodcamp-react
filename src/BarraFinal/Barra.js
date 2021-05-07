@@ -1,9 +1,12 @@
-export default function Barra(){
-    return(
+import Botao from "./Botao"
+
+export default function Barra(props){
+   return(
     <div class="footer">
-      <a href="#" class="fazer-pedido">
-        Selecione os 3 itens<br />para fechar o pedido 
-      </a>
+    <Botao ativador={props.ativador}
+     todosPratos={props.todosPratos} 
+     todasBebidas={props.todasBebidas} 
+     todasSobremesas={props.todasSobremesas}/>
     </div>
-    )
+   )
 }

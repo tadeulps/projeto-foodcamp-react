@@ -103,7 +103,9 @@ body {
   color: #32B72F;
   font-size: 20px;
 }
-
+.selecionado .contador{
+  display: inherit;
+}
 .menu .secao .opcoes .opcao.selecionado .check {
   opacity: 1;
 }
@@ -121,7 +123,7 @@ body {
 .contador{
   display: flex;
   font-size: 16px;
-   
+  display: none;
 }
 .contador p{
   padding-right: 8px;
@@ -146,6 +148,7 @@ body {
   align-items: center;
   padding: 20px;
   box-shadow: 0px 0px 4px 0 rgba(0, 0, 0, .1);
+  
 }
 
 .footer .fazer-pedido {

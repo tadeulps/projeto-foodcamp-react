@@ -1,45 +1,86 @@
 import React from 'react';
 export default function Opcao(props){
-    const [opcao, setOpcao] = React.useState('opcao');
-    const [contador,setContador]=React.useState('contador escondido');
-    const [item,setItem]=React.useState(1)
+    const [classe, setClasse] = React.useState('opcao');   
+    const [contador,setContador]=React.useState(1);
+    const [selecionados,setSelecionados]=React.useState('')
+    const { todosOpcoes, setTodosOpcoes } = props;
+    const [controladora,setControladora]=React.useState(true)
+
     return(
-    <div class={opcao} onClick={Selecionar}>
+    <div class={classe} onClick={Selecionar}>
+        <button onClick={verificadora}>verificar</button>
         <img src={`img/${props.imagem}.png`} />
         <div class="titulo">{props.titulo}</div>
         <div class="descricao">{props.descricao}</div>
         <div class="caixa-inferior">
         <div class="preco">R$ {props.preco}</div>
         
-        <div class={contador}> 
-         <p onClick={diminuir}>-</p> <p>{item}</p> <p onClick={aumentar}>+</p> 
+        <div class="contador"> 
+         <p onClick={diminuir}>-</p> <p>{contador}</p> <p onClick={aumentar}>+</p> 
         </div>
         </div>
     </div>
     )
     function Selecionar(){
-        setOpcao('opcao selecionado');
-        setContador('contador')
-        
-        // se selecionado
+        if(classe=="opcao"){
+        setClasse('opcao selecionado');
+        if(controladora){
+        setTodosOpcoes([...todosOpcoes,  
+            {nome: props.titulo,
+            preco: props.preco,
+            contador: 1}])}
+            setControladora(false)
+        }
+        //se selecionado
         //habilitar o contador
         //se contador igual a zero
         //retira o selecionado
-        if(item===0){
-            setOpcao('opcao')
-            setItem(1)
-            setContador('contador escondido')
-        }
+        
     }
     function diminuir(){
-        setItem(item-1)
-        console.log(item)
-       
+        if(contador > 1){
+            setContador(contador - 1)
+            excluiItens()
+        }else{
+            setClasse('opcao')
+            setContador(1)
+            setTodosOpcoes(todosOpcoes.filter((t)=>t.nome!=props.titulo))
+            setControladora(true)
+        }
     }
     function aumentar(){
-        setItem(item+1)
-        console.log(item)
+        setContador(contador+1)
+        
+        incluiItens();
     }
+    function incluiItens() {
+        const itemSelecionado = {
+          nome: props.titulo,
+          preco: props.preco,
+          contador: contador+1,
+        };
+        const novaArray = todosOpcoes.filter((t)=>t.nome!=props.titulo);
+        setTodosOpcoes([...novaArray,itemSelecionado]);
+        
+      }
+      function excluiItens() {
+        const itemSelecionado = {
+          nome: props.titulo,
+          preco: props.preco,
+          contador: contador-1,
+        };
+        const novaArray = todosOpcoes.filter((t)=>t.nome!=props.titulo);
+        setTodosOpcoes([...novaArray,itemSelecionado]);
+        
+      }
     
+    function verificadora(){
+        console.log(todosOpcoes)
+    }
 }
 
+/*arrayDesejada=[
+    {prato:{as arrays dos pratos selecionados}},
+    {bebida:{as arrays dos bebidas selecionados}},
+    {sobremesa:{as arrays dos sobremesa selecionados}}
+   ];*/

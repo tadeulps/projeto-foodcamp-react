@@ -1,9 +1,12 @@
-import Prato from "./Prato"
-export default function Pratos(){
+import Prato from "./Prato";
+import React from "react";
+
+export default function Pratos(props){
+  const {todosPratos, setTodosPratos}=props
     return(
         <div class="secao">
           <div class="titulo">Primeiro, seu prato</div>
-          <Prato/>
+          <Prato todosPratos={todosPratos} setTodosPratos={setTodosPratos}/>
         </div>
       
     )
