@@ -3,6 +3,8 @@ import Topo from "./Topo/Topo"
 import Menu from "./Menu/Menu"
 import Barra from "./BarraFinal/Barra"
 import React from "react";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 function App() {
     const [ativador,setAtivador]=React.useState(false);
     const [todosPratos, setTodosPratos] = React.useState([]);
@@ -24,3 +26,5 @@ function App() {
 }
 
 ReactDOM.render(<App/>, document.querySelector(".root"));
+serviceWorkerRegistration.register();
+reportWebVitals();
